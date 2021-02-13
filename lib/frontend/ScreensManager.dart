@@ -13,9 +13,11 @@ class ScreensManager extends Game {
   ScreenState _state;
 
   BaseScreen _loadingScreen;
+  Function _fn;
 
   ScreensManager() {
-    setScreenState(ScreenState.LoadingScreen);
+    _state = ScreenState.LoadingScreen;
+    _fn = _init;
   }
 
   @override
@@ -25,6 +27,15 @@ class ScreensManager extends Game {
 
   @override
   void update(double t) {
+    _fn(t);
+  }
+
+  void _init(double t) {
+    setScreenState(ScreenState.LoadingScreen);
+    _fn = _update;
+  }
+
+  void _update(double t) {
     _getActiveScreen()?.update(t);
   }
 

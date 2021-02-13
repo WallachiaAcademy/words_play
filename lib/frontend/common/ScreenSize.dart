@@ -8,6 +8,6 @@ class ScreenSize {
     this.size = size;
   }
 
-  double width() => size.width;
-  double height() => size.height;
+  get width => size.width;
+  get height => size.height;
 }
