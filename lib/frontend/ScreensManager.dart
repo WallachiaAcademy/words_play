@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flame/game.dart';
+import 'package:words_play/backend/loading/Loader.dart';
 import 'package:words_play/frontend/common/ScreenSize.dart';
 import 'package:words_play/frontend/screens/ScreenState.dart';
 import 'package:words_play/frontend/screens/loading/LoadingScreen.dart';
@@ -15,9 +16,12 @@ class ScreensManager extends Game {
   BaseScreen _loadingScreen;
   Function _fn;
 
+  Loader _loader;
+
   ScreensManager() {
     _state = ScreenState.LoadingScreen;
     _fn = _init;
+    _loader = Loader();
   }
 
   @override
@@ -33,6 +37,7 @@ class ScreensManager extends Game {
   void _init(double t) {
     setScreenState(ScreenState.LoadingScreen);
     _fn = _update;
+    _loader.run();
   }
 
   void _update(double t) {
@@ -57,7 +62,7 @@ class ScreensManager extends Game {
   void setScreenState(ScreenState state) {
     switch (state) {
       case ScreenState.LoadingScreen:
-        _loadingScreen = LoadingScreen();
+        _loadingScreen = LoadingScreen(_loader);
         _loadingScreen.resize();
         break;
       default:
