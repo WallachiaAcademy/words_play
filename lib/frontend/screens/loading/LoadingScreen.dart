@@ -1,13 +1,15 @@
 import 'dart:ui';
 
+import 'package:words_play/backend/loading/BaseLoader.dart';
 import 'package:words_play/frontend/common/Background.dart';
 import 'package:words_play/frontend/common/BaseScreen.dart';
 import 'package:words_play/frontend/common/BaseWidget.dart';
 
 class LoadingScreen extends BaseScreen {
   BaseWidget _background;
+  final BaseLoader _loader;
 
-  LoadingScreen() {
+  LoadingScreen(this._loader) {
     _background = new Background('screens/loading/background.jpg');
   }
   @override
