@@ -7,7 +7,6 @@ import 'package:words_play/frontend/common/Constants.dart';
 import 'package:words_play/frontend/common/ScreenSize.dart';
 
 class LoadingBar extends BaseWidget {
-  Rect _rect;
   Paint _paint;
 
   Offset _p1;
@@ -16,7 +15,6 @@ class LoadingBar extends BaseWidget {
   double _progress;
 
   LoadingBar() {
-    _rect = Rect.fromLTWH(0, 0, 0, 0);
     _paint = Paint();
 
     _p1 = Offset(0, 0);
