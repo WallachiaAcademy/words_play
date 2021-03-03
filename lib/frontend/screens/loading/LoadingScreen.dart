@@ -5,6 +5,8 @@ import 'package:words_play/backend/loading/BaseLoader.dart';
 import 'package:words_play/frontend/common/Background.dart';
 import 'package:words_play/frontend/common/BaseScreen.dart';
 import 'package:words_play/frontend/common/BaseWidget.dart';
+import 'package:words_play/frontend/common/Constants.dart';
+import 'package:words_play/frontend/common/GradientText.dart';
 import 'package:words_play/frontend/screens/loading/LoadingBar.dart';
 
 class LoadingScreen extends BaseScreen {
@@ -12,20 +14,34 @@ class LoadingScreen extends BaseScreen {
   BaseWidget _loadingBar;
   final BaseLoader _loader;
 
+  GradientText _loadingMsg;
+
   LoadingScreen(this._loader) {
     _background = new Background('screens/loading/background.jpg');
     _loadingBar = LoadingBar();
+
+    _loadingMsg = GradientText(
+      kLoadingFontRatio,
+      kLoadingLoadMsgXRatio,
+      kLoadingLoadMsgYRatio,
+      Colors.yellow,
+      Colors.deepOrange,
+    );
   }
   @override
   void render(Canvas canvas) {
     _background.render(canvas);
     _loadingBar.render(canvas);
+    _loadingMsg.render(canvas);
   }
 
   @override
   void resize() {
     _background.resize();
     _loadingBar.resize();
+    _loadingMsg.resize();
+
+    _loadingMsg.setText("Loading...");
   }
 
   @override
