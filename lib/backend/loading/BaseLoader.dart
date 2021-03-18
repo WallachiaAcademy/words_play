@@ -1,3 +1,5 @@
 abstract class BaseLoader {
-  int getProgress();
+  double getProgress();
+
+  void update(double t);
 }
