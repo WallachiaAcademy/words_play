@@ -1,21 +1,26 @@
+import 'dart:math';
+
 import 'package:flame/util.dart';
 import 'package:flutter/services.dart';
 import 'package:words_play/backend/loading/BaseLoader.dart';
 
 class Loader extends BaseLoader {
-  int _progress;
+  double _progress;
+  double _desireProgress;
 
   Loader() {
     _progress = 0;
+    _desireProgress = 0;
   }
 
   Future<void> run() async {
+    _setProgress(20);
     await _initializeScreen();
-    _progress = 20;
+    _setProgress(80);
     await _loadAssets();
-    _progress = 80;
+    _setProgress(90);
     await _loadData();
-    _progress = 100;
+    _setProgress(100);
   }
 
   Future<void> _initializeScreen() async {
@@ -34,7 +39,18 @@ class Loader extends BaseLoader {
   }
 
   @override
-  int getProgress() {
+  double getProgress() {
     return _progress;
+  }
+
+  @override
+  void update(double t) {
+    if (_progress < _desireProgress) {
+      _progress = min(_progress + t * 100, _desireProgress);
+    }
+  }
+
+  void _setProgress(double value) {
+    _desireProgress = value;
   }
 }

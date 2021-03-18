@@ -59,7 +59,7 @@ class LoadingBar extends BaseWidget {
       _progress = t;
 
       _p1 = Offset(screenSize.width * kLoadingBarStart, screenSize.height / 2);
-      _p2 = Offset(screenSize.width * kLoadingBarEnd * _progress / 100,
+      _p2 = Offset(_p1.dx + screenSize.width * kLoadingBarEnd * _progress / 100,
           screenSize.height / 2);
     }
   }

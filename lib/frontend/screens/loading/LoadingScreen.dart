@@ -14,11 +14,20 @@ class LoadingScreen extends BaseScreen {
   BaseWidget _loadingBar;
   final BaseLoader _loader;
 
+  GradientText _loadingPercentage;
   GradientText _loadingMsg;
 
   LoadingScreen(this._loader) {
     _background = new Background('screens/loading/background.jpg');
     _loadingBar = LoadingBar();
+
+    _loadingPercentage = GradientText(
+      kLoadingFontRatio,
+      kLoadingLoadPerXRatio,
+      kLoadingLoadPerYRatio,
+      Colors.yellow,
+      Colors.deepOrange,
+    );
 
     _loadingMsg = GradientText(
       kLoadingFontRatio,
@@ -31,6 +40,7 @@ class LoadingScreen extends BaseScreen {
   @override
   void render(Canvas canvas) {
     _background.render(canvas);
+    _loadingPercentage.render(canvas);
     _loadingBar.render(canvas);
     _loadingMsg.render(canvas);
   }
@@ -38,6 +48,7 @@ class LoadingScreen extends BaseScreen {
   @override
   void resize() {
     _background.resize();
+    _loadingPercentage.resize();
     _loadingBar.resize();
     _loadingMsg.resize();
 
@@ -46,6 +57,8 @@ class LoadingScreen extends BaseScreen {
 
   @override
   void update(double t) {
-    _loadingBar.update(_loader.getProgress().toDouble());
+    _loader.update(t);
+    _loadingPercentage.setText(_loader.getProgress().round().toString() + "%");
+    _loadingBar.update(_loader.getProgress());
   }
 }
