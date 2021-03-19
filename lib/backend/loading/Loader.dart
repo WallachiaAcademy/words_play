@@ -53,4 +53,9 @@ class Loader extends BaseLoader {
   void _setProgress(double value) {
     _desireProgress = value;
   }
+
+  @override
+  bool isComplete() {
+    return _progress.round() == 100;
+  }
 }

@@ -2,11 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:words_play/backend/loading/BaseLoader.dart';
+import 'package:words_play/frontend/ScreensManager.dart';
 import 'package:words_play/frontend/common/Background.dart';
 import 'package:words_play/frontend/common/BaseScreen.dart';
 import 'package:words_play/frontend/common/BaseWidget.dart';
 import 'package:words_play/frontend/common/Constants.dart';
 import 'package:words_play/frontend/common/GradientText.dart';
+import 'package:words_play/frontend/screens/ScreenState.dart';
 import 'package:words_play/frontend/screens/loading/LoadingBar.dart';
 
 class LoadingScreen extends BaseScreen {
@@ -60,5 +62,9 @@ class LoadingScreen extends BaseScreen {
     _loader.update(t);
     _loadingPercentage.setText(_loader.getProgress().round().toString() + "%");
     _loadingBar.update(_loader.getProgress());
+
+    if (_loader.isComplete()) {
+      screensManager.setScreenState(ScreenState.MenuScreen);
+    }
   }
 }
