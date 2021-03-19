@@ -5,6 +5,7 @@ import 'package:words_play/backend/loading/Loader.dart';
 import 'package:words_play/frontend/common/ScreenSize.dart';
 import 'package:words_play/frontend/screens/ScreenState.dart';
 import 'package:words_play/frontend/screens/loading/LoadingScreen.dart';
+import 'package:words_play/frontend/screens/menu/MenuScreen.dart';
 
 import 'common/BaseScreen.dart';
 
@@ -14,6 +15,8 @@ class ScreensManager extends Game {
   ScreenState _state;
 
   BaseScreen _loadingScreen;
+  BaseScreen _menuScreen;
+
   Function _fn;
 
   Loader _loader;
@@ -54,6 +57,8 @@ class ScreensManager extends Game {
     switch (_state) {
       case ScreenState.LoadingScreen:
         return _loadingScreen;
+      case ScreenState.MenuScreen:
+        return _menuScreen;
       default:
         throw new Exception("Invalid screen state" + _state.toString());
     }
@@ -64,6 +69,10 @@ class ScreensManager extends Game {
       case ScreenState.LoadingScreen:
         _loadingScreen = LoadingScreen(_loader);
         _loadingScreen.resize();
+        break;
+      case ScreenState.MenuScreen:
+        _menuScreen = MenuScreen();
+        _menuScreen.resize();
         break;
       default:
         break;

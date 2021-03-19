@@ -1,3 +1,4 @@
 enum ScreenState {
   LoadingScreen,
+  MenuScreen,
 }
