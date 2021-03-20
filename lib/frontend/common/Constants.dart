@@ -13,3 +13,9 @@ final double kLoadingLoadPerYRatio = 0.4;
 
 final double kLoadingLoadMsgXRatio = 0.5;
 final double kLoadingLoadMsgYRatio = 0.6;
+
+// Menu Screen
+final double kMainScreenLogoWidthRatio = 0.5;
+final double kMainScreenLogoHeightRatio = 0.25;
+final double kMainScreenLogoCenterX = 0.5;
+final double kMainScreenLogoCenterY = 0.25;
