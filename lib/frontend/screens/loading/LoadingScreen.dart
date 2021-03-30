@@ -67,4 +67,9 @@ class LoadingScreen extends BaseScreen {
       screensManager.setScreenState(ScreenState.MenuScreen);
     }
   }
+
+  @override
+  void onTapDown(TapDownDetails details) {
+    // TODO: implement onTapDown
+  }
 }

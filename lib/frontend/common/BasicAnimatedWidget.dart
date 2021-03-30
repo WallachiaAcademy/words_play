@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
+import 'package:flutter/src/gestures/tap.dart';
 import 'package:words_play/frontend/common/AnimationState.dart';
 import 'package:words_play/frontend/common/BaseAnimatedWidget.dart';
 
@@ -87,5 +88,17 @@ class BasicAnimatedWidget extends BaseAnimatedWidget {
 
     _component.x = screenSize.width * CenterXRatio - _component.width / 2;
     _component.y = screenSize.height * CenterYRatio - _component.height / 2;
+  }
+
+  @override
+  void onTapDown(TapDownDetails details, Function onTap) {
+    var pos = details.globalPosition;
+
+    if (pos.dx >= _component.x && pos.dx <= _component.x + _component.width) {
+      if (pos.dy >= _component.y &&
+          pos.dy <= _component.y + _component.height) {
+        onTap();
+      }
+    }
   }
 }
