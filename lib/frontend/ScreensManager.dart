@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flame/game.dart';
+import 'package:flame/gestures.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:words_play/backend/loading/Loader.dart';
 import 'package:words_play/frontend/common/ScreenSize.dart';
 import 'package:words_play/frontend/screens/ScreenState.dart';
@@ -11,7 +13,7 @@ import 'common/BaseScreen.dart';
 
 ScreensManager screensManager = ScreensManager();
 
-class ScreensManager extends Game {
+class ScreensManager extends Game with TapDetector {
   ScreenState _state;
 
   BaseScreen _loadingScreen;
@@ -78,5 +80,10 @@ class ScreensManager extends Game {
         break;
     }
     this._state = state;
+  }
+
+  @override
+  void onTapDown(TapDownDetails details) {
+    _getActiveScreen()?.onTapDown(details);
   }
 }

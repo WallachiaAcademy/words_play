@@ -19,3 +19,11 @@ final double kMainScreenLogoWidthRatio = 0.5;
 final double kMainScreenLogoHeightRatio = 0.25;
 final double kMainScreenLogoCenterX = 0.5;
 final double kMainScreenLogoCenterY = 0.25;
+
+final double kMainScreenButtonsWidthRatio = 0.45;
+final double kMainScreenButtonsHeightRatio = 0.1;
+final double kMainScreenButtonsCenterX = 0.5;
+
+final double kMainScreenStartButtonCenterY = 0.5;
+final double kMainScreenSettingsButtonCenterY = 0.65;
+final double kMainScreenExitButtonCenterY = 0.8;

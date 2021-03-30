@@ -63,4 +63,9 @@ class LoadingBar extends BaseWidget {
           screenSize.height / 2);
     }
   }
+
+  @override
+  void onTapDown(TapDownDetails details, Function onTap) {
+    // TODO: implement onTapDown
+  }
 }
